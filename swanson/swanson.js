@@ -17,7 +17,7 @@ module.exports = {
 	},
 	replyOnIntent: function replyOnIntent(data) {
 		if (!data.entities.Intent)
-			return "I do not comprehend.";
+			return "";
 
 		var intent = data.entities.Intent[0].value;
 

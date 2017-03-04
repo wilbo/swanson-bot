@@ -1,3 +1,3 @@
 ## Swanson Chatbot
 
-[talk](http://swanson.azurewebsites.net/) to the man, Ron Swanson.
+[talk](https://telegram.me/ronSwansonBot) to the man, Ron Swanson.
