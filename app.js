@@ -1,7 +1,5 @@
 // https://docs.botframework.com/en-us/node/builder/guides/core-concepts/
 
-var credentials = require('./credentials');
-
 var restify = require('restify');
 var builder = require('botbuilder');
 var swanson = require('./swanson/swanson');
@@ -12,28 +10,24 @@ var swanson = require('./swanson/swanson');
 
 // Setup Restify Server
 var server = restify.createServer();
-
-
 server.listen(process.env.port || process.env.PORT || 3978, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
 
-// Create chat bot
-var connector = new builder.ChatConnector({
-  appId: credentials.MICROSOFT_APP_ID,
-  appPassword: credentials.MICROSOFT_APP_PASSWORD
-});
-
-var bot = new builder.UniversalBot(connector);
-
-server.post('/api/messages', connector.listen());
-
+// index page / static files
 server.get(/.*/, restify.serveStatic({
     directory: './static',
     default: 'index.html'
 }));
 
+// Create chat bot
+var connector = new builder.ChatConnector({
+  appId: process.env.MICROSOFT_APP_ID,
+  appPassword: process.env.MICROSOFT_APP_PASSWORD });
+var bot = new builder.UniversalBot(connector);
 
+// retrieve messages here
+server.post('/api/messages', connector.listen());
 
 //=========================================================
 // Bots Dialogs
