@@ -1,3 +1,3 @@
 ## Swanson Chatbot
 
-... WIP WIP WIP
+[talk](http://swanson.azurewebsites.net/) to the man, Ron Swanson.
