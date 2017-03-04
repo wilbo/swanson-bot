@@ -2,14 +2,13 @@
 
 var restify = require('restify');
 var builder = require('botbuilder');
+var path = require('path');
+var favicon = require('serve-favicon');
 var swanson = require('./swanson/swanson');
-
-//=========================================================
-// Bot Setup
-//=========================================================
 
 // Setup Restify Server
 var server = restify.createServer();
+server.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 server.listen(process.env.port || process.env.PORT || 3978, function () {
   console.log('%s listening to %s', server.name, server.url);
 });
