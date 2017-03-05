@@ -39,41 +39,45 @@ var myWit = new Wit({
 
 // reply to user input
 bot.dialog('/', [
-	function (session, results) {
-		session.sendTyping();
-		myWit.message(session.message.text, {}).then((data) => {
+  function (session, results) {
+    session.sendTyping();
+    myWit.message(session.message.text, {}).then((data) => {
       var intent = data.entities.Intent
 
-			if (intent) {
-				switch (intent[0].value) {
-					case 'introduction':
-						session.send(swanson.getIntroduction());
-						setTimeout(() => {
-							session.send("I got more quotes for you if you want them..");
-						}, 1000)
-						break;
-					case 'greeting':
-						session.send(swanson.getGreeting());
-						setTimeout(() => {
-							session.send("I got more quotes for you if you want them..");
-						}, 1000)
-						break;
-					case 'well-being':
+      if (intent) {
+        switch (intent[0].value) {
+          case 'introduction':
+            session.send(swanson.getIntroduction());
+            setTimeout(() => {
+              session.send("I got more quotes for you if you want them..");
+            }, 1000);
+            break;
+
+          case 'greeting':
+            session.send(swanson.getGreeting());
+            setTimeout(() => {
+              session.send("I got more quotes for you if you want them..");
+            }, 1000);
+            break;
+
+          case 'well-being':
             session.send(swanson.getWellBeing());
             break;
-					case 'compliment':
-						session.send(swanson.getThanks());
-						break;
-					case 'quote':
-						session.send(swanson.getRandomQuote());
-						break;
-				}
-			} else {
-				session.send(swanson.getDontKnow());
-				setTimeout(() => {
-					session.send("I got more quotes for you if you want them..");
-				}, 1000)
-			}
-		}).catch(console.error);
-	}
+
+          case 'compliment':
+            session.send(swanson.getThanks());
+            break;
+
+          case 'quote':
+            session.send(swanson.getRandomQuote());
+            break;
+        }
+      } else {
+        session.send(swanson.getDontKnow());
+        setTimeout(() => {
+          session.send("I got more quotes for you if you want them..");
+        }, 500);
+      }
+    }).catch(console.error);
+  }
 ]);
