@@ -33,13 +33,45 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // ai api
-var myWit = new Wit({accessToken: 'KDDCTELDLIF3U3B6GTS4ZNF2I5Y2ENBJ'});
+var myWit = new Wit({accessToken: process.env.WIT_KEY});
 
 // reply to user input
 bot.dialog('/', [
   function (session, results) {
+    session.sendTyping();
     myWit.message(session.message.text, {}).then((data) => {
-      session.send(swanson.replyOnIntent(data))
+      if (data.entities.Intent) {
+    		var intent = data.entities.Intent[0].value;
+
+    		switch (intent) {
+    			case 'introduction':
+    				session.send(swanson.getIntroduction());
+            setTimeout(() => {
+              session.send("I got more quotes for you if you want them..");
+            }, 1000)
+    				break;
+    			case 'greeting':
+    				session.send(swanson.getGreeting());
+            setTimeout(() => {
+              session.send("I got more quotes for you if you want them..");
+            }, 1000)
+    				break;
+    			case 'well-being':
+    				session.send(swanson.getWellBeing());
+    				break;
+    			case 'compliment':
+    				session.send(swanson.getThanks());
+    				break;
+    			case 'quote':
+    				session.send(swanson.getRandomQuote());
+    				break;
+    		}
+      } else {
+        session.send(swanson.getDontKnow());
+        setTimeout(() => {
+          session.send("I got more quotes for you if you want them..");
+        }, 1000)
+      }
     }).catch(console.error);
   }
 ]);

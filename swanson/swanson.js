@@ -15,30 +15,16 @@ module.exports = {
 	getIntroduction: function getIntroduction() {
 		return "My name is Ron Swanson, and I'm going to tell you everything you need to know about the miserable, screwed up world of local government.";
 	},
-	replyOnIntent: function replyOnIntent(data) {
-		if (!data.entities.Intent)
-			return "";
-
-		var intent = data.entities.Intent[0].value;
-
-		switch (intent) {
-			case 'introduction':
-				return this.getIntroduction();
-				break;
-		  case 'greeting':
-		    return "Why hello?";
-		    break;
-		  case 'well-being':
-		    return "Doing fine";
-		    break;
-		  case 'compliment':
-		    return "Thanks but no thanks";
-		    break;
-		  case 'quote':
-		    return this.getRandomQuote();
-		    break;
-		  default:
-		    return "I do not comprehend";
-		}
+	getGreeting: function getGreeting() {
+		return "I know more than you.";
+	},
+	getWellBeing: function getWellBeing() {
+		return "Doing fine";
+	},
+	getThanks: function getThanks() {
+		return "Thanks but no thanks";
+	},
+	getDontKnow: function getDontKnow() {
+		return "I do not comprehend";
 	}
 };

@@ -49,15 +49,17 @@ module.exports = [
     "I hate everything.",
     "I love nothing.",
     "I love riddles!",
+    "I regret nothing. The end.",
     "Don't waste energy moving unless necessary.",
     "I'll take that steak to go. Please and thank you.",
     "Creativity is for people with glasses who like to lie.",
     "Children are terrible artists and artists are crooks.",
-    "Tom put all my records into this rectangle!",
+    "Tom put all my records into this rectangle! The songs just play one right after the other! This is an excellent rectangle!",
     "I believe luck is a concept invented by the weak to explain their failures.",
     "What's cholesterol?",
     "People who buy things are suckers.",
     "I'm going to get 12 eggs and part of a dead animal. Dealer's choice. Please and thank you.",
     "What the f*ck is a German muffin?!?",
-    "I wanna punch you in the face so bad right now."
+    "I wanna punch you in the face so bad right now.",
+    "Dear frozen yoghurt. you are the celery of desserts. Be ice cream, or be nothing."
 ];
