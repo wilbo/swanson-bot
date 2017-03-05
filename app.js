@@ -33,7 +33,9 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // ai api
-var myWit = new Wit({accessToken: process.env.WIT_KEY});
+var myWit = new Wit({
+  accessToken: process.env.WIT_KEY
+});
 
 // reply to user input
 bot.dialog('/', [
